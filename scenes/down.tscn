@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://lnmerhpmf8t0"]
+
+[ext_resource type="Texture2D" uid="uid://b0te5gbp1k62d" path="res://assets/down.svg" id="1_tmrqa"]
+
+[node name="down" type="Node2D"]
+
+[node name="Down" type="Sprite2D" parent="."]
+position = Vector2(-255, -204)
+scale = Vector2(0.65625, 0.65625)
+texture = ExtResource("1_tmrqa")

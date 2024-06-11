@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl6va8wiaigr8"]
+
+[ext_resource type="AudioStream" uid="uid://dyty5pxg6wgp2" path="res://assets/my-remedy-170494.mp3" id="1_unvtj"]
+
+[node name="bg music" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_unvtj")
+volume_db = -10.0
+autoplay = true

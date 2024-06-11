@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5okvj5a6cpkc"]
+
+[ext_resource type="Texture2D" uid="uid://c6cq4ay42fw4i" path="res://assets/mouse2.svg" id="1_emr4r"]
+
+[sub_resource type="Animation" id="Animation_usg5t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(599, 375)]
+}
+
+[sub_resource type="Animation" id="Animation_gg6t5"]
+resource_name = "spawn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(599, 375), Vector2(599, 166)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n60x5"]
+_data = {
+"RESET": SubResource("Animation_usg5t"),
+"spawn": SubResource("Animation_gg6t5")
+}
+
+[node name="Mouse2" type="Node2D"]
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(599, 375)
+scale = Vector2(0.536652, 0.532654)
+texture = ExtResource("1_emr4r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_n60x5")
+}
+autoplay = "spawn"

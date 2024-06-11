@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1xxia2idxftl"]
+
+[ext_resource type="Texture2D" uid="uid://bqhl13dv6l53i" path="res://assets/up.svg" id="1_mug32"]
+
+[node name="up" type="Node2D"]
+
+[node name="up" type="Sprite2D" parent="."]
+position = Vector2(-160, -204)
+scale = Vector2(0.65625, 0.65625)
+texture = ExtResource("1_mug32")

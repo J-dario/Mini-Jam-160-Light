@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://d13uk6rjf2b1d"]
+
+[ext_resource type="Script" path="res://scripts/Menu.gd" id="1_71v8h"]
+[ext_resource type="Texture2D" uid="uid://bxxlkvvo2k418" path="res://assets/logo.png" id="2_uvbqg"]
+[ext_resource type="PackedScene" uid="uid://bep6bu4mkq2v3" path="res://scenes/background.tscn" id="2_w2jtx"]
+[ext_resource type="Texture2D" uid="uid://b6o4n1ro4frb" path="res://assets/mouse1.svg" id="3_tss0p"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -629.0
+offset_bottom = -354.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_71v8h")
+
+[node name="Background" parent="." instance=ExtResource("2_w2jtx")]
+layout_mode = 1
+offset_left = -62.0
+offset_top = -56.0
+offset_right = -62.0
+offset_bottom = -56.0
+
+[node name="Mouse2" type="Sprite2D" parent="."]
+position = Vector2(-74, 42)
+scale = Vector2(1.18176, 1.18176)
+texture = ExtResource("3_tss0p")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 473.0
+offset_top = 373.0
+offset_right = 696.0
+offset_bottom = 711.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="How" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "How To Play"
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(561, 194)
+texture = ExtResource("2_uvbqg")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/How" to="." method="_on_how_pressed"]

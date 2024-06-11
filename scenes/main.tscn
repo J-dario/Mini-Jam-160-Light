@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://cslyue4hh2ypw"]
+
+[ext_resource type="PackedScene" uid="uid://bep6bu4mkq2v3" path="res://scenes/background.tscn" id="1_bymg7"]
+[ext_resource type="Texture2D" uid="uid://bg615xqcct7bh" path="res://assets/Floor.svg" id="1_hku7u"]
+[ext_resource type="PackedScene" uid="uid://dcfut7cclbocx" path="res://scenes/player.tscn" id="3_357rl"]
+[ext_resource type="Texture2D" uid="uid://debt7t7yh82jc" path="res://assets/miniMini.svg" id="4_7ned4"]
+[ext_resource type="PackedScene" uid="uid://boas2bgnb5cn6" path="res://scenes/hands.tscn" id="5_7rnxq"]
+[ext_resource type="PackedScene" uid="uid://bdysne5bdiy4r" path="res://scenes/score.tscn" id="6_hukbs"]
+[ext_resource type="PackedScene" uid="uid://bmypjvcq2500j" path="res://scenes/speed_up.tscn" id="7_71cpu"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_abgd2"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Background" parent="." instance=ExtResource("1_bymg7")]
+offset_left = -638.0
+offset_top = -459.0
+offset_right = -638.0
+offset_bottom = -459.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+
+[node name="MiniMini" type="Sprite2D" parent="."]
+position = Vector2(13, -28)
+scale = Vector2(0.84668, 0.84668)
+texture = ExtResource("4_7ned4")
+
+[node name="Floor" type="Sprite2D" parent="."]
+position = Vector2(1, -23)
+scale = Vector2(1.25861, 0.841797)
+texture = ExtResource("1_hku7u")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/StaticBody2D"]
+position = Vector2(1.17288, 245.903)
+shape = SubResource("WorldBoundaryShape2D_abgd2")
+
+[node name="Player" parent="." instance=ExtResource("3_357rl")]
+z_index = 1
+
+[node name="Hands" parent="." instance=ExtResource("5_7rnxq")]
+position = Vector2(19, 19)
+
+[node name="CollisionShape2D" parent="Hands/Area2D" index="0"]
+position = Vector2(-16, 65)
+
+[node name="Score" parent="." instance=ExtResource("6_hukbs")]
+z_index = 3
+position = Vector2(-5, 162)
+
+[node name="SpeedUP" parent="." instance=ExtResource("7_71cpu")]
+position = Vector2(-575, 0)
+
+[node name="Spawner1" type="Marker2D" parent="."]
+position = Vector2(14, -174)
+
+[editable path="Hands"]

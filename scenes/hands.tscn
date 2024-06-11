@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://boas2bgnb5cn6"]
+
+[ext_resource type="Script" path="res://scripts/Hands.gd" id="1_1xtdw"]
+[ext_resource type="Texture2D" uid="uid://cecqrdjutxhy" path="res://assets/hands.svg" id="2_tm2j6"]
+[ext_resource type="AudioStream" uid="uid://dmpmn7e8fhi06" path="res://assets/ropejump.mp3" id="3_o8jqu"]
+[ext_resource type="AudioStream" uid="uid://b21so12g0iijg" path="res://assets/whistle.mp3" id="4_76oe6"]
+[ext_resource type="AudioStream" uid="uid://c7vg884sa6j2g" path="res://assets/powerUp.wav" id="5_51alx"]
+[ext_resource type="AudioStream" uid="uid://c2ouvnf12uwj1" path="res://assets/pickupCoin.wav" id="6_mp8n2"]
+
+[sub_resource type="Curve2D" id="Curve2D_ja28a"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -295, 33.7102, -239.652, -0.890899, 239.652, 0.890899, -2, -180, 0, 0, 0, 0, 288, 35.1739)
+}
+point_count = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r61jw"]
+size = Vector2(112, 20)
+
+[node name="Hands" type="Node2D"]
+script = ExtResource("1_1xtdw")
+
+[node name="Hands" type="Sprite2D" parent="."]
+position = Vector2(-1.00001, -1.00001)
+scale = Vector2(0.817383, 0.817383)
+texture = ExtResource("2_tm2j6")
+
+[node name="Rope" type="Path2D" parent="."]
+position = Vector2(0, 6.97029)
+scale = Vector2(1, 0.683168)
+curve = SubResource("Curve2D_ja28a")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(9, 61)
+shape = SubResource("RectangleShape2D_r61jw")
+
+[node name="losetimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="ropesfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_o8jqu")
+
+[node name="whistle" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_76oe6")
+
+[node name="rat" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_51alx")
+
+[node name="speed" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_mp8n2")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="losetimer" to="." method="_on_losetimer_timeout"]

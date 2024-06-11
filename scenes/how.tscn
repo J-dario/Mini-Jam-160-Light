@@ -1,0 +1,103 @@
+[gd_scene load_steps=9 format=3 uid="uid://byhhlerbrqe8e"]
+
+[ext_resource type="Script" path="res://scenes/how.gd" id="1_pr4yu"]
+[ext_resource type="PackedScene" uid="uid://bep6bu4mkq2v3" path="res://scenes/background.tscn" id="2_7qgrt"]
+[ext_resource type="Texture2D" uid="uid://b6o4n1ro4frb" path="res://assets/mouse1.svg" id="3_f3anf"]
+[ext_resource type="Texture2D" uid="uid://bstcsngbku1dm" path="res://assets/right.svg" id="4_vmuls"]
+[ext_resource type="Texture2D" uid="uid://b0te5gbp1k62d" path="res://assets/down.svg" id="5_ulemb"]
+[ext_resource type="Texture2D" uid="uid://debt7t7yh82jc" path="res://assets/miniMini.svg" id="6_jma1o"]
+[ext_resource type="Texture2D" uid="uid://bsk0s1f1xlanh" path="res://assets/player.svg" id="7_nnv6q"]
+[ext_resource type="Texture2D" uid="uid://cecqrdjutxhy" path="res://assets/hands.svg" id="8_lhmcf"]
+
+[node name="How" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -629.0
+offset_bottom = -354.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pr4yu")
+
+[node name="Background" parent="." instance=ExtResource("2_7qgrt")]
+layout_mode = 1
+offset_left = -66.0
+offset_top = -146.0
+offset_right = -66.0
+offset_bottom = -146.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 564.0
+offset_right = 617.0
+offset_bottom = 623.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back
+"
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(41, 11)
+color = Color(0.843137, 0.545098, 0.341176, 1)
+polygon = PackedVector2Array(-17, 1, 382, 3, 382, 510, -17, 510)
+
+[node name="Polygon2D" type="Polygon2D" parent="Polygon2D"]
+position = Vector2(637, -5)
+color = Color(0.843137, 0.545098, 0.341176, 1)
+polygon = PackedVector2Array(-17, 1, 382, 3, 382, 510, -17, 510)
+
+[node name="Line2D" type="Line2D" parent="Polygon2D"]
+points = PackedVector2Array(66, 328, 79, 292, 103, 270, 140, 253, 184, 249, 217, 256, 238, 270, 264, 290, 284, 319)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 407.0
+offset_right = 384.0
+offset_bottom = 529.0
+text = "Hit W or UP arrow to jump over the rope."
+
+[node name="Label" type="Label" parent="Label"]
+layout_mode = 0
+offset_left = 629.0
+offset_top = -16.0
+offset_right = 981.0
+offset_bottom = 106.0
+text = "When you see the mouse the jump button
+gets replaced with the arrow/direciton before
+disappearing. (ie. right then down)"
+
+[node name="Mouse1" type="Sprite2D" parent="."]
+position = Vector2(308, -131)
+texture = ExtResource("3_f3anf")
+
+[node name="Right" type="Sprite2D" parent="."]
+position = Vector2(490, -134)
+texture = ExtResource("4_vmuls")
+
+[node name="Down" type="Sprite2D" parent="."]
+position = Vector2(530, -131)
+texture = ExtResource("5_ulemb")
+
+[node name="MiniMini" type="Sprite2D" parent="."]
+position = Vector2(223, 302)
+scale = Vector2(0.329102, 0.329102)
+texture = ExtResource("6_jma1o")
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(226, 303)
+scale = Vector2(0.333496, 0.333496)
+texture = ExtResource("7_nnv6q")
+
+[node name="Hands" type="Sprite2D" parent="."]
+position = Vector2(218, 322)
+scale = Vector2(0.304688, 0.304688)
+texture = ExtResource("8_lhmcf")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdysne5bdiy4r"]
+
+[ext_resource type="Texture2D" uid="uid://bjg71aft4n37j" path="res://assets/score.svg" id="1_oamv6"]
+[ext_resource type="FontFile" uid="uid://canksa024riu3" path="res://assets/Play-Regular.ttf" id="2_7i6ne"]
+[ext_resource type="Script" path="res://scripts/Score.gd" id="3_4nhui"]
+
+[node name="Score" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4, -207)
+scale = Vector2(0.545898, 0.545898)
+texture = ExtResource("1_oamv6")
+
+[node name="Score" type="Label" parent="."]
+offset_left = -56.0
+offset_top = -397.0
+offset_right = 64.0
+offset_bottom = -344.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_7i6ne")
+theme_override_font_sizes/font_size = 45
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_4nhui")
